@@ -1,19 +1,22 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstdio>
 using namespace std;
-bool isPrime(int N)
-{
-    for(int i = 2 ; i * i <= N ; i++)
-        if(N % i == 0)
-            return false;
-    return true;
-}
-int countPrimes(int N)
-{
-    if(N < 3)
-        return 0;
-    int cnt = 1;
-    for(int i = 3 ; i < N ; i += 2)
-        if(isPrime(i))
-            cnt++;
-    return cnt;
+
+int main() {
+    int a,b,i;
+    char *str[] = {"one","two","three","four","five","six","seven","eight","nine","even","odd"};
+    cin>>a;
+    cin>>b;
+    for (i=a;i<=b;i++)
+    {
+        if(i<=9)
+        {
+            cout<<str[i-1]<<"\n";
+        }
+        else
+        {
+            cout<<str[9+(i%2)]<<"\n";
+        } 
+        }
+    return 0;
 }
