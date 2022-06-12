@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int splitArray(vector<int>& nums, int m) {
+      const int n = nums.size();
+    vector<vector<long>> A(n + 1, vector<long>(m + 1, INT_MAX));
+    vector<long> prefix(n + 1);
+    partial_sum(begin(nums), end(nums), begin(prefix) + 1);
+    for (int i = 1; i <= n; ++i)
+     A[i][1] = prefix[i];
+
+    for (int k = 2; k <= m; ++k)
+      for (int i = k; i <= n; ++i)
+        for (int j = k - 1; j < i; ++j)
+          A[i][k] = min(A[i][k], max(A[j][k - 1], prefix[i] - prefix[j]));
+
+    return A[n][m];   
+    }
+};
