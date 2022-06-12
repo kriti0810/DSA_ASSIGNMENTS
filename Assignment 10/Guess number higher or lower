@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int guessNumber(int n) {
+        if (guess(n) == 0)
+            return n;
+        int i = 1;
+        int j = n;
+        while (i < j) {
+            int m = i + (j - i) / 2;
+            int tmp = guess(m);
+            if (tmp == 0)
+                return m;
+            else if (tmp == 1)
+                i = m + 1;
+            else
+                j = m - 1;
+        }
+        return i;
+    }
+};
