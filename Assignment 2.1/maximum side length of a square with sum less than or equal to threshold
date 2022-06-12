@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maxSideLength(vector<vector<int>>& mat, int threshold) {
+     int M = mat.size(), N = mat[0].size(), ans = 0;
+        vector<vector<int>> sum(M + 1, vector<int>(N + 1));
+        for (int i = 0; i < M; ++i) {
+            int s = 0;
+            for (int j = 0; j < N; ++j) sum[i + 1][j + 1] = sum[i][j + 1] + (s += mat[i][j]);
+        }
+        for (int i = 0; ans <= min(M, N) && i <= M - ans; ++i) {
+            for (int j = 0; ans <= min(M, N) && j <= N - ans; ++j) {
+                for (; ans <= min(M - i, N - j) && sum[i + ans][j + ans] - sum[i + ans][j] - sum[i][j + ans] + sum[i][j] <= threshold; ++ans);
+            }
+        }
+        return ans - 1;
+    }
+};
