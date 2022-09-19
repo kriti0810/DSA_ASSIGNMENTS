@@ -1,0 +1,38 @@
+
+   bool findtarget(int a[], int n, int target)
+   {
+       int f=0;
+            for(int i=0;i<n;i++)
+            {
+                if(a[i]==target)
+                {
+                 f=1;   
+                }
+            }
+       if(f==0)
+       {
+           return false;
+           
+       }
+       else
+       { 
+           return true;
+         
+       }
+   }
+int main() {
+    int n;
+    cout<<"enter size"<<"\n";
+    cin>>n;
+    int a[n];
+    cout<<"enter values"<<"\n";
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int target;
+    cout<<"enter target"<<"\n";
+    cin>>target;
+  findtarget (a,n,target);
+
+}
